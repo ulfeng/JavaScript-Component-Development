@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+
+    <!--<script>
+        // 面向对象的组成
+        var arr = [];
+        arr.number = 10; // 对象下面的变量：叫做对象的属性
+
+        // alert(arr.number);
+        // alert(arr.length);
+
+        arr.test = function () { // 对象下面的函数：叫做对象的方法
+            alert(123);
+        };
+
+        arr.test();
+
+        arr.push();
+        arr.sort();
+    </script>-->
+
+    <!--<script>
+        // 创建第一个面向对象的程序
+        // var obj = {};
+        var obj = new Object(); // 创建一个空的对象
+
+        obj.name = "小明"; // 属性
+
+        obj.showName = function () { // 方法
+            alert(this.name);
+        };
+
+        obj.showName();
+
+        var obj2 = {
+            name: "小强",
+            showName: function () {
+                alert(this.name);
+            }
+        }
+        obj2.showName();
+    </script>-->
+
+    <!--<script>
+        // 工厂模式 : 封装函数
+        function createPerson(name) {
+            // 1.原料
+            var obj = new Object();
+            // 2.加工
+            obj.name = name;
+            obj.showName = function () {
+                alert(this.name);
+            };
+            // 3.出场
+            return obj;
+        }
+        var p1 = createPerson("小明");
+        p1.showName();
+        var p2 = createPerson("小强");
+        p2.showName();
+
+    </script>-->
+
+    <!--<script>
+        // 构造函数
+        // 当new去调用一个函数 : 这个时候函数中的this就是创建出来的对象,而且函数的的返回值直接就是this啦(隐式返回) 
+        function CreatePerson(name) {
+            this.name = name;
+            //this.showName = function () {
+            //    alert(this.name);
+            //};
+        }
+
+        CreatePerson.prototype.showName = function () {
+            alert(this.name);
+        }
+
+        var p1 = new CreatePerson("小明");
+        p1.showName();
+
+        var p2 = new CreatePerson("小强");
+        p2.showName();
+
+        alert(p1.showName === p2.showName);  // false
+
+        // 这些对象的hello函数实际上只需要共享同一个函数就可以了，这样可以节省很多内存。
+
+        var arr = new Array();
+        var date = new Date();
+
+    </script>-->
+
+    <!--<script>
+        // 对象的引用
+        //var a = [1, 2, 3];
+        //var b = [1, 2, 3];
+        //alert(a === b);  // false
+
+        //var a = 5;
+        //var b = a;
+        //b += 3;
+        //alert(b); // 8
+        //alert(a); // 5 基本类型，赋值的时候只是值的复制
+
+        //var a = [1, 2, 3];
+        //var b = a;
+        //b.push(4);
+        //alert(b); // [1,2,3,4]
+        //alert(a); // [1,2,3,4] 对象类型 : 赋值不仅是值的复制，而且也是引用的传递
+
+        //var a = [1, 2, 3];
+        //var b = a;
+        //var b = [1, 2, 3, 4];
+        //alert(b); // 1,2,3,4
+        //alert(a); // 1,2,3
+
+        //var a = 5;
+        //var b = 5;
+        //alert(a === b); // 基本类型 : 值相同就可以
+
+        //var a = [1, 2, 3];
+        //var b = [1, 2, 3];
+        //alert(a === b);   //true 对象类型 : 值和引用都相同才行
+
+        var a = [1, 2, 3];
+        var b = a;
+        alert(a === b);   // true
+    </script>-->
+
+    <!--<script>
+        // 原型 : 去改写对象下面公用的方法或者属性 , 让公用的方法或者属性在内存中存在一份 ( 提高性能 )  
+        //var arr = [1, 2, 3, 4, 5];
+        //var arr2 = [2, 2, 2, 2, 2];
+        //arr.sum = function () {
+        //    var result = 0;
+        //    for (var i = 0; i < this.length; i++) {
+        //        result += this[i];
+        //    }
+        //    return result;
+        //}
+        //arr2.sum = function () {
+        //    var result = 0;
+        //    for (var i = 0; i < this.length; i++) {
+        //        result += this[i];
+        //    }
+        //    return result;
+        //}
+        //alert(arr.sum());
+        //alert(arr2.sum());
+
+        //var arr1 = [1, 2, 3, 4, 5];
+        //var arr2 = [2, 2, 2, 2, 2];
+        //Array.prototype.sum = function () {
+        //    var result = 0;
+        //    for (var i = 0; i < this.length; i++) {
+        //        result += this[i];
+        //    }
+        //    return result;
+        //}
+
+        //alert(arr1.sum());
+        //alert(arr2.sum());
+
+        var arr = [];
+        arr.number = 10;
+        Array.prototype.number = 20;
+        alert(arr.number);
+
+    </script>-->
+
+    <!--<script>
+        // hasOwnproperty : 看是不是自身下面的属性
+        var arr = [];
+        arr.num = 10;
+        Array.prototype.num2 = 20;
+
+        alert(arr.hasOwnProperty("num"));
+        alert(arr.hasOwnProperty("num2"));
+    </script>-->
+
+    <!--<script>
+        // constructor : 查看对象的构造函数
+        function A() {
+        }
+        var a1 = new A();
+        alert(a1.constructor); //A
+
+        var arr = [];
+        alert(arr.constructor); // Array
+
+
+    </script>-->
+    <!--<script>
+        // instanceof : 对象与构造函数在原型链上是否有关系
+        function test() {
+            
+        }
+        var a1 = new test();
+        alert(a1 instanceof Object); // true
+
+        var arr = [];
+        alert(arr instanceof Array); // true
+    </script>-->
+
+<!--    <script>
+        // toString() : 系统对象下面自带的，自己写的对象都是通过原型链找object下面的
+        var arr = [];
+        alert(arr.toString == Object.prototype.toString); // false
+
+        function test() {
+            
+        }
+        var a1 = new test();
+        alert(a1.toString = Object.prototype.toString); // true
+
+        // toString() 把对象转成字符串
+        var arr = [1, 2, 3];
+        Array.prototype.toString = function () {
+            return this.join("+");
+        }
+        alert(arr.toString()); // 1+2+3
+
+        var num = 255;
+        alert(num.toString()); // 255
+
+    </script>-->
+
+    <script>
+        //继承 : 子类不影响父类，子类可以继承父类的一些功能 ( 代码复用 )  
+        //属性的继承 : 调用父类的构造函数 call  
+        //方法的继承 : for in :  拷贝继承 (jquery也是采用拷贝继承extend)  
+        function CreatePerson(name, sex) {  // 父类
+            this.name = name;
+            this.sex = sex;
+        }
+        CreatePerson.prototype.showName = function () {
+            alert(this.name);
+        }
+
+        var p1 = new CreatePerson("小明","男");
+        p1.showName();
+
+        function CreateStar(name, sex, job) {
+            CreatePerson.call(this, name, sex);
+            this.job = job;
+        }
+        extend(CreateStar.prototype, CreatePerson.prototype);
+        CreateStar.prototype.showJob = function () {
+            alert(this.job);
+        }
+        var p2 = new CreateStar("黄xx", "男", "歌星");
+        p2.showJob();
+
+        function extend(obj1,obj2) {
+            for (var attr in obj2) {
+                obj1[attr] = obj2[attr];
+            }
+        }
+    </script>
+
+    <script>
+        // 对象的复制
+        var a = {
+            name: "小明"
+        };
+        var b = a;
+
+    </script>
+
+</body>
+</html>
