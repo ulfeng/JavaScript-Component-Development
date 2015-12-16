@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <!-- 面向对象的 JavaScript -->
+</head>
+<body>
+    <!-- JavaScript 对面向对象的支持 -->
+    <!--<script>
+        // 1 实例方法 
+        // 实例方法是由实例对象访问的方法，实例对象由new操作符创建。实例成员通过this关键字、prototype、构造器闭包或者Object.defineProperty来创建
+    
+        function Cat(name) {
+            var voice = "Meow";
+            this.name = name;
+            this.say = function () {
+                return voice;
+            }
+        }
+
+        Cat.prototype.eat = function () {
+            return "Eating";
+        }
+
+        var cat = new Cat("Fluffy");
+        Object.defineProperty(cat, "numLegs", {
+            value: 4,
+            writable: true,
+            enumerable: true,
+            configurable: true
+        });
+
+        alert(cat.name);  // Fluffy
+        alert(cat.numLegs); // 4
+        alert(cat.say()); // Meow
+        alert(cat.eat()); // Eating 
+    </script>-->
+
+    <!--<script>
+        // 静态方法
+        // JavaScript中没有对静态成员的直接支持。构造函数可以用来创建静态成员，静态成员不能被"this"关键字访问。 
+        // 公有静态成员例子：
+        //function Factory() { };
+        //// public static method
+        //Factory.getType = function () {
+        //    return "Object Factory";
+        //};
+        //// public static method
+        //Factory.versionId = "F2.0";
+        //Factory.prototype.test = function () {
+        //    alert(this.versionId); // undefined
+        //    alert(Factory.versionId); // F2.0
+        //    alert(Factory.getType()); // Object Factory
+        //}
+        //var factory = new Factory();
+        //factory.test();
+
+        // 私有静态成员例子
+        var Book = (function () {
+            // private static field
+            var numOfBooks = 0;
+            // private static method
+            function checkIsbn(isbn) {
+                if (isbn.length != 10 && isbn.length !== 13) {
+                    throw new Error("isbn is not valid！");
+                }
+            }
+
+            function Book(isbn, title) {
+                checkIsbn(isbn);
+                this.isbn = isbn;
+                this.title = title;
+                numOfBooks++;
+                this.getNumOfBooks = function () {
+                    return numOfBooks;
+                }
+            }
+            return Book;
+        })();
+
+        var firstBook = new Book("0-943396-04-2", "First Title");
+        alert(firstBook.title);
+        alert(firstBook.getNumOfBooks()); //
+
+    </script>-->
+
+    <!--<script>
+        // 抽象类型
+        // JavaScript是一种弱类型的语言，所以定义变量时不需要指定具体的类型。这减少了像接口这样的抽象层次需要。但当我们需要继承的时候，我们可以将一些公共函数放入抽象类中。 
+        (function () {
+            var abstractCreateLock = false;
+            // abstract type
+            function BaseForm() {
+                if (abstractCreateLock) {
+                    throw new Error("Can't instantiate BaseForm！");
+                }
+            }
+            BaseForm.prototype = {};
+            BaseForm.prototype.post = function () {
+                throw new Error("Not implemented！");
+            }
+
+            function GridForm() { };
+            GridForm.prototype = new BaseForm();
+            abstractCreateLock = true;
+            GridForm.prototype.post = function () {
+                // ...
+                return "Grid is posted.";
+            }
+            window.BaseForm = BaseForm;
+            window.GridForm = GridForm;
+        })();
+
+        var myGrid = new GridForm();
+        console.log(myGrid.post()); // Grid is posted
+        var myForm = new BaseForm();// Error:can't instantiate BaseForm!
+
+    </script>-->
+
+    <!--<script>
+        // 接口
+        // 在JavaScript中无直接的接口或虚类继承。但可以由类似下面的代码来模拟，
+        // 只留一个方法签名检查。
+
+        var Interface = function (name, methods) {
+            this.name = name;
+            // copies array
+            this.methods = methods.slice(0);
+        };
+
+        Interface.checkImplements = function (obj, interfaceObj) {
+            for (var i = 0; i < interfaceObj.methods.length; i++) {
+                var method = interfaceObj.methods[i];
+                if (!obj[method] || typeof obj[method] !== "function") {
+                    throw new Error("Interface not implemented! Interface: " + interfaceObj.name + "Method:" + method);
+                }
+            }
+        };
+
+        var iMaterial = new Interface("Imaterial", ["getName", "getPrice"]);
+
+        function Product(name, price, type) {
+            Interface.checkImplements(this, iMaterial);
+            this.name = name;
+            this.price = price;
+            this.type = type;
+        }
+
+        Product.prototype.getName = function () {
+            return this.name;
+        };
+
+        Product.prototype.getPrice = function () {
+            return this.price;
+        };
+
+        var firstCar = new Product("Super Car X11", 20000, "Car");
+        console.log(firstCar.getName()); // Super Car X11s
+        delete Product.prototype.getPrice;
+        var secondCar = new Product("Super Car X12", 30000, "Car"); // Error: Interface not implemented!
+
+    </script>-->
+
+    <!--<script>
+        // 单例对象
+        // 如果只使用对象的一个实例，可以考虑用单例模式
+        var Logger = {
+            enabled: true,
+            log: function (logText) {
+                if (!this.enabled) {
+                    return;
+                }
+                if (console && console.log) {
+                    console.log(logText)
+                } else {
+                    alert(logText);
+                }
+            }
+        }
+    </script>-->
+
+    <script>
+        function Logger() { };
+        Logger.enabled = true;
+        Logger.log = function (logText) {
+            if (!Logger.enabled) {
+                return;
+            }
+            if (console && console.log) {
+                console.log(logText);
+            }
+            else {
+                alert(logText);
+            }
+        };
+        Logger.log("test"); // test
+        Logger.enabled = false;
+        Logger.log("test");  //
+    </script>
+
+</body>
+</html>

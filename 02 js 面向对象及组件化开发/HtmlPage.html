@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <!-- 参考地址 http://blog.csdn.net/pkgray/article/details/38615551 -->
 </head>
 <body>
 
@@ -230,7 +231,7 @@
 
     </script>-->
 
-    <script>
+    <!--<script>
         //继承 : 子类不影响父类，子类可以继承父类的一些功能 ( 代码复用 )  
         //属性的继承 : 调用父类的构造函数 call  
         //方法的继承 : for in :  拷贝继承 (jquery也是采用拷贝继承extend)  
@@ -261,16 +262,85 @@
                 obj1[attr] = obj2[attr];
             }
         }
-    </script>
+    </script>-->
 
-    <script>
+    <!--<script>
         // 对象的复制
+        //var a = {
+        //    name: "小明"
+        //};
+        //var b = a;
+        //b.name = "小强";
+        //alert(a.name);
+
         var a = {
             name: "小明"
         };
-        var b = a;
+        // var b = a;
+        var b = {};
+        extend(b, a);
+        b.name = "小强";
+        alert(a.name); // 小明
+        alert(b.name); // 小强
+        
+        function extend(obj1, obj2) {
+            for (var attr in obj2) {
+                obj1[attr] = obj2[attr];
+            }
+        }
+    </script>-->
 
-    </script>
+    <!--<script>
+        // 类式继承
+        // 类 : JS 是没有类的概念的，把JS中的构造函数看作类
+        // 要做属性和方法继承的时候，要分开继承
+        function test() { // 父类
+            this.name = [1, 2, 3];
+        }
+        test.prototype.showName = function () {
+            alert(this.name);
+        };
+        function testChildren() { // 子类
+            test.call(this);
+        }
+
+        var F = function () { };
+        F.prototype = test.prototype;
+        testChildren.prototype.constructor = test; // 修正指向问题
+
+        var test1 = new test();
+        alert(test1.constructor);
+        b1.name.push(4);
+
+        var b2 = new testChildren();
+        alert(b2.name);
+    </script>-->
+
+    <!--<script>
+        // 原型继承
+        var a = {
+            name: "小明"
+        };
+
+        var b = cloneObj(a);
+        b.name = "小强";
+        alert(a.name);
+        alert(b.name);
+        
+        function cloneObj(obj) {
+            var F = function () { };
+            F.prototype = obj;
+            return new F();
+        }
+
+        // 通用继承：通用型的，有 new或无new 的都可以
+        // 类式继承：new 构造函数
+        // 原型继承：无new的对象
+
+    </script>-->
+
+    
+
 
 </body>
 </html>
