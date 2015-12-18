@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>面向对象的JS（3）对象创建和成员作用域</title>
+    <!-- 参考地址: http://jobar.iteye.com/blog/2016347 -->
+</head>
+<body>
+    <!-- 对象创建 -->
+    <script>
+        // 1.使用new操作符
+        // 内置或自定义的对象类型的实例可以用new操作符创建。
+        // new 操作符只运行构造函数，已存在的对象不能用new再创建一次。
+        // 首先new 操作符创建一个空对象，然后调用构造函数同时将新创建的对象赋值给this,
+        // 构造函数执行其初始化工作
+        var dog = {};
+        // var dog = new Object();
+        dog.name = "Scooby";
+        dog.owner = {};
+        dog.owner.name = "Mike";
+        dog.bark = function () {
+            return "Woof";
+        };
+        console.log(dog.name); // Scooby
+        console.log(dog.owner.name); // Mike
+        console.log(dog.bark()); // Woof
+
+        // 2.对象字面量创建
+        var dog = {
+            name: "Scooby?",
+            owner: {
+                name: "Mike"
+            },
+            bark: function () {
+                return "Woof";
+            }
+        };
+
+        console.log(dog.name); // Scooby
+        console.log(dog.owner.name); // Mike
+        console.log(dog.bark()); // Woof
+
+    </script>
+</body>
+</html>
