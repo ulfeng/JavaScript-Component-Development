@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>面向对象的轮播</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        #box{
+            width:1920px;
+            height:400px;
+            position:relative;
+            overflow:hidden;
+        }
+        #box .content{
+            overflow:hidden;
+            position:absolute;
+        }
+        #box .content img{
+            float:left;
+        }
+        #box .page{
+            overflow:hidden;
+            position:absolute;
+            top:38px;
+            left:50%;
+        }
+        #box .page li{
+            width:10px;
+            height:10px;
+            border-radius:10px;
+            background:#000;
+        }
+        #box .page .active{
+            background:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="content">
+            <img src="images/1.jpg" />
+            <img src="images/2.jpg" />
+            <img src="images/3.jpg" />
+        </div>
+        <ul class="page">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        window.onload = function () {
+            var oBox = document.getElementById("box");
+
+        }
+    </script>
+</body>
+</html>
